@@ -13,13 +13,13 @@ public class Main {
     static String op;
     static String input;
     static String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV",
-                "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII",
-                "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
-                "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV",
-                "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII",
-                "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX",
-                "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI",
-                "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"};
+            "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII",
+            "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
+            "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV",
+            "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII",
+            "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX",
+            "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI",
+            "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"};
 
 
     private static boolean isNumeric(String strNum) {
@@ -50,10 +50,13 @@ public class Main {
             return;
         }
         String[] numbers = input.split(op);
-        if (numbers.length>2 || numbers[1].contains(op)) {
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = numbers[i].trim();
+        }
+        if (numbers.length > 2 || numbers[1].contains(op)) {
             System.out.println("Выражение должно состоять из одного действия");
-            return;}
-        else {
+            return;
+        } else {
             if (isNumeric(numbers[0])) {
                 a = parseInt(numbers[0]);
             } else {
@@ -89,29 +92,28 @@ public class Main {
         }
         switch (op) {
             case "\\+":
-                result=a+b;
+                result = a + b;
                 break;
             case "-":
-                result=a-b;
+                result = a - b;
                 break;
             case "\\*":
-                result=a*b;
+                result = a * b;
                 break;
             case "/":
-                result=a/b;
+                result = a / b;
                 break;
         }
-        if(isNumeric(numbers[0])){
+        if (isNumeric(numbers[0])) {
             System.out.println(result);
         } else {
-            if (result<0) {
+            if (result < 0) {
                 System.out.println("В римской системе нет отрицательных чисел");
             } else if (result == 0) {
-                System.out.println(0)
-                    } else {
-                System.out.println(roman[(result-1)]);
+                System.out.println(0);
+            } else {
+                System.out.println(roman[(result - 1)]);
             }
         }
     }
 }
-
