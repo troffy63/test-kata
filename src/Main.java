@@ -106,7 +106,9 @@ public class Main {
         } else {
             if (result<0) {
                 System.out.println("В римской системе нет отрицательных чисел");
-            } else {
+            } else if (result == 0) {
+                System.out.println(0)
+                    } else {
                 System.out.println(roman[(result-1)]);
             }
         }
